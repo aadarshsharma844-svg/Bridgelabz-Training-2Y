@@ -1,28 +1,30 @@
 import java.util.Scanner;
 
-public class FriendsAgeHeight {
+public class NumberCheck {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] names = {"Amar", "Akbar", "Anthony"};
-        int[] age = new int[3];
-        double[] height = new double[3];
+        int[] arr = new int[5];
 
-        for(int i=0; i<3; i++) {
-            System.out.print("Enter age of " + names[i] + ": ");
-            age[i] = sc.nextInt();
-            System.out.print("Enter height of " + names[i] + ": ");
-            height[i] = sc.nextDouble();
+        for(int i=0; i<arr.length; i++) {
+            System.out.print("Enter number " + (i+1) + ": ");
+            arr[i] = sc.nextInt();
         }
 
-        int youngestIndex = 0;
-        int tallestIndex = 0;
-        for(int i=1; i<3; i++) {
-            if(age[i] < age[youngestIndex]) youngestIndex = i;
-            if(height[i] > height[tallestIndex]) tallestIndex = i;
+        for(int num : arr) {
+            if(num > 0) {
+                if(num % 2 == 0) System.out.println(num + " is Positive Even");
+                else System.out.println(num + " is Positive Odd");
+            } else if(num < 0) {
+                System.out.println(num + " is Negative");
+            } else {
+                System.out.println(num + " is Zero");
+            }
         }
 
-        System.out.println("Youngest: " + names[youngestIndex]);
-        System.out.println("Tallest: " + names[tallestIndex]);
+        if(arr[0] == arr[4]) System.out.println("First and last are equal");
+        else if(arr[0] > arr[4]) System.out.println("First is greater than last");
+        else System.out.println("First is less than last");
+
         sc.close();
     }
 }

@@ -1,37 +1,25 @@
 import java.util.Scanner;
 
-public class DynamicDigits {
+public class StoreNumbers {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter a number: ");
-        int num = sc.nextInt();
-        int maxDigit = 10;
-        int[] digits = new int[maxDigit];
+        double[] arr = new double[10];
+        double total = 0.0;
         int index = 0;
 
-        while(num != 0) {
-            if(index == maxDigit) {
-                maxDigit += 10;
-                int[] temp = new int[maxDigit];
-                for(int i=0; i<digits.length; i++) temp[i] = digits[i];
-                digits = temp;
-            }
-            digits[index++] = num % 10;
-            num /= 10;
+        while(true) {
+            System.out.print("Enter a number: ");
+            double num = sc.nextDouble();
+            if(num <= 0 || index == 10) break;
+            arr[index++] = num;
         }
 
-        int largest = 0, secondLargest = 0;
         for(int i=0; i<index; i++) {
-            if(digits[i] > largest) {
-                secondLargest = largest;
-                largest = digits[i];
-            } else if(digits[i] > secondLargest && digits[i] != largest) {
-                secondLargest = digits[i];
-            }
+            total += arr[i];
+            System.out.println("Number " + (i+1) + ": " + arr[i]);
         }
 
-        System.out.println("Largest digit = " + largest);
-        System.out.println("Second largest digit = " + secondLargest);
+        System.out.println("Sum = " + total);
         sc.close();
     }
 }

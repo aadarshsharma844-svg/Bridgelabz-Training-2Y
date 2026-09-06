@@ -1,28 +1,19 @@
 import java.util.Scanner;
 
-public class ReverseNumberArray {
+public class MultiplicationTableRange {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter a number: ");
         int num = sc.nextInt();
-        int count = 0, temp = num;
+        int[] result = new int[4];
 
-        while(temp != 0) {
-            count++;
-            temp /= 10;
+        for(int i=6; i<=9; i++) {
+            result[i-6] = num * i;
         }
 
-        int[] digits = new int[count];
-        for(int i=0; i<count; i++) {
-            digits[i] = num % 10;
-            num /= 10;
+        for(int i=6; i<=9; i++) {
+            System.out.println(num + " * " + i + " = " + result[i-6]);
         }
-
-        System.out.print("Digits in normal order: ");
-        for(int i=count-1; i>=0; i--) System.out.print(digits[i] + " ");
-        System.out.println();
-        System.out.print("Digits in reverse order: ");
-        for(int i=0; i<count; i++) System.out.print(digits[i] + " ");
         sc.close();
     }
 }
